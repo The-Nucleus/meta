@@ -14,7 +14,7 @@ The goal of Nucleus is to provide a simple, as pure-JS as possible solution to a
   * Single server for both platforms
 * Support for serverless updates, using a static file store such as S3
 * `LZMA` compression support for installing and updating
-* Cross platform diff updates (incremental updates)
+* Cross platform delta updates (incremental updates)
 * A developer friendly API
   * Progress events
   * Complete control of what gets downloaded when
@@ -52,7 +52,7 @@ Versions will be stored on the server in a JSON format as described below
         size: 100,
         name: 'MyApp.exe'
       },
-      diffUpdateFiles: [{
+      deltaUpdateFiles: [{
         hash: '',
         size: 100,
         name: 'MyApp-delta.xz',
@@ -72,9 +72,9 @@ Update checks will be performed by fetching all versions from the server in the 
 
 ##### Downloading an Update
 
-When downloading an update the developer will simply call a `downloadUpdate` method which will initially download the diff file if available.  When the developer calls `updateAndRestart`, if the diff file fails to apply then this method will throw an `InvalidDiff` error and mark the update in memory as being invalid to use the diff method. Developers must catch this error and call `downloadUpdate` again, this time that method will automatically download the full update file.
+When downloading an update the developer will simply call a `downloadUpdate` method which will initially download the delta file if available.  When the developer calls `updateAndRestart`, if the delta file fails to apply then this method will throw an `InvalidDelta` error and mark the update in memory as being invalid to use the delta method. Developers must catch this error and call `downloadUpdate` again, this time that method will automatically download the full update file.
 
-If the diff file is not available then the full update file will be downloaded initially.
+If the delta file is not available then the full update file will be downloaded initially.
 
 If the full update file fails for some reason the error that occured will be thrown like normal and developers must handle that occuring.
 
