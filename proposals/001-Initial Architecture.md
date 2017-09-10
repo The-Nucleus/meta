@@ -48,18 +48,18 @@ Versions will be stored on the server in a JSON format as described below
   platformFiles: {
     [platform]: {
       installerFile: {
-        hash: '',
+        sha256Hash: '',
         size: 100,
         name: 'MyApp.exe'
       },
       deltaUpdateFiles: [{
-        hash: '',
+        sha256Hash: '',
         size: 100,
         name: 'MyApp-delta.xz',
         from: '0.0.1'
       }],
       fullUpdateFile: {
-        hash: '',
+        sha256Hash: '',
         size: 100,
         name: 'MyApp-full.xz'
       },
